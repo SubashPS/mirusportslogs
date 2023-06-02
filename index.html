@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .show {
+      display: grid;
+    }
+  </style>
+</head>
+<body>
+<img src="https://img.mirusports.com/images/mirusports_logo.png" alt="MiruSports Logo">
+<h1>Consolidated Logs of MiruSports</h1>
+  <button class="button" onclick="openLogsAdmin()">MiruSports Admin</button>
+  <!--<button class="button" onclick="openLogsProduction()">MiruSports Production</button> -->
+  <button class="button" onclick="openLogsUAT()">MiruSports UAT</button>
+  <button class="button" onclick="openLogsStaging()">MiruSports Staging</button>
+  <button class="button" onclick="openLogsMSTVL()">MiruSports TVL</button>
+  <button class="button" onclick="openLogsMSNGL()">MiruSports NGL</button>
+  <div id="myDropdownAdmin" class="dropdown-content">
+      <a href="https://192.168.71.202:7002/mylogs/">Laravel</a>
+      <a href="https://192.168.71.202:7002/mylogs/nginx">Nginx</a>
+  </div>
+  <div id="myDropdownUAT" class="dropdown-content">
+      <a href="https://192.168.71.203:8000/mylogs/">Laravel</a>
+      <a href="https://192.168.71.203:8000/mylogs/nginx">Nginx</a>
+  </div>
+  <div id="myDropdownStaging" class="dropdown-content">
+      <a href="https://192.168.73.173:8000/mylogs/">Laravel</a>
+      <a href="https://192.168.73.173:8000/mylogs/nginx">Nginx</a>
+      <a href="https://192.168.73.173:8000/mylogs/MS_API_Log">API log</a>
+  </div>
+  <div id="myDropdownMSTVL" class="dropdown-content">
+      <a href="http://117.247.182.44/mylogs/">Laravel</a>
+      <a href="http://117.247.182.44/mylogs/nginx">Nginx</a>
+  </div>
+  <div id="myDropdownMSNGL" class="dropdown-content">
+      <a href="http://117.221.69.53:9000/mylogs/">Laravel</a>
+      <a href="http://117.221.69.53:9000/mylogs/nginx">Nginx</a>
+  </div>
+  <!--<div id="myDropdownProduction" class="dropdown-content">
+      <a href="https://192.168.71.203:8000/mylogs/">Payment/application</a>
+      <a href="https://192.168.71.203:8000/mylogs/nginx">Nginx</a>
+      <a href="https://192.168.71.203:8000/mylogs/nginx">PM2</a>
+  </div> -->
+  <script>
+    function openLogsAdmin() {
+     var dropdownContent = document.getElementById("myDropdownAdmin");
+     dropdownContent.classList.toggle("show");
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.button')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    
+    function openLogsProduction() {
+      var dropdownContent = document.getElementById("myDropdownProduction");
+     dropdownContent.classList.toggle("show");
+    }
+    function openLogsUAT() {
+     var dropdownContent = document.getElementById("myDropdownUAT");
+     dropdownContent.classList.toggle("show");
+    }
+    function openLogsStaging() {
+     var dropdownContent = document.getElementById("myDropdownStaging");
+     dropdownContent.classList.toggle("show");
+    }
+    function openLogsMSTVL() {
+     var dropdownContent = document.getElementById("myDropdownMSTVL");
+     dropdownContent.classList.toggle("show");
+    }
+    function openLogsMSNGL() {
+     var dropdownContent = document.getElementById("myDropdownMSNGL");
+     dropdownContent.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
